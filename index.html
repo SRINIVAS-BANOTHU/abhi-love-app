@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhi ❤️ Bakkodu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffb6d9, #ffd6ea);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff;
+      position: relative;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .cards {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 18px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 85%;
+      background: white;
+      color: #ff4f9a;
+      padding: 25px;
+      border-radius: 25px;
+      text-align: center;
+      z-index: 999;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .popup p {
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff4f9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .heart {
+      position: fixed;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .footer {
+      margin-top: 30px;
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="lockScreen" style="position:fixed; inset:0; background:linear-gradient(135deg,#ff7eb3,#ffb6d9); z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; color:white; padding:20px; text-align:center;">
+    <h1 style="font-size:2.2rem; margin-bottom:15px;">🔐 Private Love App</h1>
+    <p style="margin-bottom:15px;">Only Abhi can unlock this 😌💖</p>
+    <input id="passwordInput" type="password" placeholder="Enter password" style="padding:12px; border:none; border-radius:15px; width:220px; text-align:center; font-size:1rem; outline:none;">
+    <button onclick="unlockApp()" style="margin-top:15px; padding:12px 24px; border:none; border-radius:20px; background:white; color:#ff4f9a; font-size:1rem; font-weight:bold;">Unlock ❤️</button>
+    <p id="errorMsg" style="margin-top:10px; color:#fff;"></p>
+  </div>
+
+  <div class="container">
+    <h1>For Abhi 💖</h1>
+    <p class="subtitle">From your Bakkodu 😎</p>
+
+    <div style="margin-top:25px; background:rgba(255,255,255,0.2); padding:18px; border-radius:25px; backdrop-filter:blur(10px); box-shadow:0 8px 20px rgba(0,0,0,0.15);">
+      <h2 style="margin-bottom:15px;">📸 Abhi's Favorite Human</h2>
+
+      <div style="display:flex; overflow-x:auto; gap:15px; padding-bottom:10px; scroll-snap-type:x mandatory;">
+
+        <div style="min-width:220px; background:white; border-radius:20px; overflow:hidden; scroll-snap-align:center; color:#ff4f9a;">
+          <img src="file_00000000cee4720783627e82aab3c22a" style="width:100%; height:280px; object-fit:cover;">
+          <div style="padding:12px; font-weight:bold;">Bike meeda kurchoni hero feel 😎</div>
+        </div>
+
+        <div style="min-width:220px; background:white; border-radius:20px; overflow:hidden; scroll-snap-align:center; color:#ff4f9a;">
+          <img src="file_0000000097cc7207a0094503653cb89c" style="width:100%; height:280px; object-fit:cover;">
+          <div style="padding:12px; font-weight:bold;">Nature + Bakkodu combo 🌿💖</div>
+        </div>
+
+        <div style="min-width:220px; background:white; border-radius:20px; overflow:hidden; scroll-snap-align:center; color:#ff4f9a;">
+          <img src="file_0000000021cc720794fe777d2f40e069" style="width:100%; height:280px; object-fit:cover;">
+          <div style="padding:12px; font-weight:bold;">College lo silent ga stylish 😌</div>
+        </div>
+
+        <div style="min-width:220px; background:white; border-radius:20px; overflow:hidden; scroll-snap-align:center; color:#ff4f9a;">
+          <img src="file_00000000aba472079ee3eb3535e064cf" style="width:100%; height:280px; object-fit:cover;">
+          <div style="padding:12px; font-weight:bold;">Abhi approved face card 😂❤️</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card" onclick="showPopup('miss')">
+        <h2>💌 Open when you miss me</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('sad')">
+        <h2>🌧️ Open when you are sad</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('angry')">
+        <h2>😡 Open when you are angry</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('sleep')">
+        <h2>😴 Open when you can't sleep</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('laugh')">
+        <h2>😂 Open when you need a laugh</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('ugly')">
+        <h2>🥺 Open when you feel ugly</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('hungry')">
+        <h2>🍔 Open when you are hungry</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('fight')">
+        <h2>💔 Open after our fight</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('special')">
+        <h2>✨ Open when you need love</h2>
+      </div>
+
+      <div class="card" onclick="showPopup('secret')">
+        <h2>🎁 Secret surprise</h2>
+      </div>
+    </div>
+
+    <div style="margin-top:35px; background:rgba(255,255,255,0.2); padding:18px; border-radius:20px; backdrop-filter:blur(10px);">
+      <h2 style="margin-bottom:15px;">💬 Chat With Bakkodu</h2>
+      <div id="chatBox" style="height:220px; overflow-y:auto; background:rgba(255,255,255,0.15); border-radius:15px; padding:12px; text-align:left; margin-bottom:10px;">
+        <div style="background:white; color:#ff4f9a; padding:10px; border-radius:15px; margin-bottom:10px; width:fit-content; max-width:80%;">
+          Hey Abhi 😌💖
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <input id="chatInput" type="text" placeholder="Message your Bakkodu 💕" style="flex:1; padding:12px; border:none; border-radius:15px; outline:none;">
+        <button onclick="sendMessage()" style="padding:12px 18px; border:none; border-radius:15px; background:white; color:#ff4f9a; font-weight:bold;">Send</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      Made with ❤️ by Bakkodu
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <h3 id="popupTitle"></h3>
+    <p id="popupMessage"></p>
+    <button class="close-btn" onclick="closePopup()">Close 💕</button>
+  </div>
+
+  <script>
+    const messages = {
+      miss: {
+        title: 'You Miss Me? 🥺',
+        message: 'Then come here idiot 😌💖. I am always one text away. Even if I am busy, my heart is always with you Abhi.'
+      },
+      sad: {
+        title: 'Hey Pretty Girl 🌸',
+        message: 'Bad days are temporary. But your cuteness? Permanent 😌. Your Bakkodu believes in you always.'
+      },
+      angry: {
+        title: 'Angry Ah? 😭',
+        message: 'Okay okay... your anger is valid 😔. But don’t stay angry too long or I will send 100 cringe reels.'
+      },
+      sleep: {
+        title: 'Can’t Sleep? 🌙',
+        message: 'Close your eyes and imagine me annoying you tomorrow also 😎💕. Sleep peacefully baby.'
+      },
+      laugh: {
+        title: 'Emergency Laugh Delivery 😂',
+        message: 'Breaking News: World’s cutest girl caught smiling while thinking about Bakkodu 😌.'
+      },
+      ugly: {
+        title: 'Excuse Me?? 😤',
+        message: 'You are literally beautiful even in low battery mode. Stop doubting yourself 😌💖.'
+      },
+      hungry: {
+        title: 'Hungry Baby 🍕',
+        message: 'Eat properly 😡. You need energy to tolerate me daily.'
+      },
+      fight: {
+        title: 'After Our Fight 💔',
+        message: 'No matter how much we fight, I still choose you every single time ❤️.'
+      },
+      special: {
+        title: 'For My Favorite Person ✨',
+        message: 'You are my peace, happiness, stress, headache and favorite notification 😭💖.'
+      },
+      secret: {
+        title: 'Secret Unlocked 🎁',
+        message: 'Congratulations 🎉 You unlocked unlimited hugs and one lifetime subscription to Bakkodu 😎❤️'
+      }
+    };
+
+    function showPopup(type) {
+      document.getElementById('popupTitle').innerText = messages[type].title;
+      document.getElementById('popupMessage').innerText = messages[type].message;
+      document.getElementById('popup').classList.add('active');
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.remove('active');
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function unlockApp() {
+      const password = document.getElementById('passwordInput').value;
+
+      if(password === 'abhibakkodu') {
+        document.getElementById('lockScreen').style.display = 'none';
+        document.getElementById('bgMusic').play();
+      } else {
+        document.getElementById('errorMsg').innerText = 'Wrong password 😭 Hint: abhibakkodu';
+      }
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const chatBox = document.getElementById('chatBox');
+
+      if(input.value.trim() === '') return;
+
+      const userMsg = document.createElement('div');
+      userMsg.style.cssText = 'background:#ff4f9a;color:white;padding:10px;border-radius:15px;margin:10px 0 10px auto;width:fit-content;max-width:80%;';
+      userMsg.innerText = input.value;
+      chatBox.appendChild(userMsg);
+
+      const replies = [
+        'Nuvvu ila message chesthe na heartbeat increase avthundi 😭💖',
+        'Abhi... nuvvu navvithe chalu naa day set 😌',
+        'Em chestunnav ra cutie 😏',
+        'Ninnu chusthe WiFi signal kuda strong aipothadi 😂',
+        'Naa life lo best notification nuvve 💕',
+        'Nuvvu kopam lo unna kuda cute ga untav 😭',
+        'Bakkodu approved girlfriend 😎❤️',
+        'Ninnu tease cheyyadam naa full time job 😂'
+      ];
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.style.cssText = 'background:white;color:#ff4f9a;padding:10px;border-radius:15px;margin-bottom:10px;width:fit-content;max-width:80%;';
+        botMsg.innerText = replies[Math.floor(Math.random() * replies.length)];
+        chatBox.appendChild(botMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 700);
+
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
